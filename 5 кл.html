@@ -1,0 +1,1157 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Труд (технология) 5 класс: Обработка древесины ручным инструментом</title>
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --surface-soft: #f1f5f9;
+      --primary: #b45309;
+      --primary-dark: #92400e;
+      --primary-light: #fef3c7;
+      --accent: #047857;
+      --accent-light: #d1fae5;
+      --success: #059669;
+      --success-light: #d1fae5;
+      --warning: #d97706;
+      --warning-light: #fef3c7;
+      --danger: #dc2626;
+      --danger-light: #fee2e2;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #cbd5e1;
+      --radius: 16px;
+      --shadow: 0 4px 20px rgba(15, 23, 42, 0.06);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding-bottom: 56px;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 16px;
+    }
+
+    .topbar-inner {
+      max-width: 880px;
+      margin: 0 auto;
+    }
+
+    .topbar-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 8px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      background: var(--primary-light);
+      color: var(--primary-dark);
+      font-weight: 700;
+      font-size: 0.85rem;
+      padding: 4px 12px;
+      border-radius: 999px;
+    }
+
+    .timer-box {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      background: var(--surface-soft);
+      border: 1px solid var(--border);
+      padding: 4px 12px;
+      border-radius: 999px;
+    }
+
+    .progress-track {
+      width: 100%;
+      height: 8px;
+      background: #e2e8f0;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      transition: width 0.35s ease;
+    }
+
+    .nav-pills {
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+      padding-top: 10px;
+      scrollbar-width: none;
+    }
+
+    .nav-pills::-webkit-scrollbar {
+      display: none;
+    }
+
+    .nav-pill {
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text-muted);
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 0.83rem;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s;
+    }
+
+    .nav-pill.active {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+    }
+
+    .nav-pill.done {
+      border-color: var(--success);
+      color: var(--success);
+      background: var(--success-light);
+    }
+
+    .nav-pill.active.done {
+      background: var(--success);
+      color: #fff;
+    }
+
+    .container {
+      max-width: 880px;
+      margin: 20px auto 0;
+      padding: 0 16px;
+    }
+
+    .card {
+      background: var(--surface);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 24px;
+      margin-bottom: 20px;
+      border: 1px solid rgba(203, 213, 225, 0.75);
+    }
+
+    .module {
+      display: none;
+      animation: fadeIn 0.25s ease;
+    }
+
+    .module.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h1 {
+      font-size: 1.55rem;
+      line-height: 1.25;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      font-size: 1.3rem;
+      margin-bottom: 12px;
+      color: var(--primary-dark);
+    }
+
+    h3 {
+      font-size: 1.08rem;
+      margin: 16px 0 8px;
+    }
+
+    p {
+      margin-bottom: 12px;
+    }
+
+    ul {
+      margin: 8px 0 14px 20px;
+    }
+
+    li {
+      margin-bottom: 6px;
+    }
+
+    .time-tag {
+      display: inline-block;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--accent);
+      background: var(--accent-light);
+      padding: 3px 10px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+
+    .callout {
+      background: var(--surface-soft);
+      border-left: 4px solid var(--primary);
+      padding: 14px 16px;
+      border-radius: 0 12px 12px 0;
+      margin: 14px 0;
+    }
+
+    .callout.warn {
+      border-left-color: var(--danger);
+      background: var(--danger-light);
+    }
+
+    .callout.success {
+      border-left-color: var(--success);
+      background: var(--success-light);
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 12px;
+      margin: 14px 0;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 12px;
+      margin: 14px 0;
+    }
+
+    .info-box {
+      background: var(--surface-soft);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px;
+    }
+
+    .info-box strong {
+      display: block;
+      font-size: 1.02rem;
+      margin-bottom: 6px;
+      color: var(--primary-dark);
+    }
+
+    .interactive-zone {
+      background: #fffbeb;
+      border: 2px dashed #f59e0b;
+      border-radius: var(--radius);
+      padding: 18px;
+      margin-top: 18px;
+    }
+
+    .interactive-title {
+      font-weight: 800;
+      font-size: 1.05rem;
+      color: var(--primary-dark);
+      margin-bottom: 8px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: 10px 18px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+    }
+
+    .btn:hover {
+      background: var(--primary-dark);
+    }
+
+    .btn:active {
+      transform: scale(0.98);
+    }
+
+    .btn-secondary {
+      background: #e2e8f0;
+      color: var(--text);
+    }
+
+    .btn-secondary:hover {
+      background: #cbd5e1;
+    }
+
+    .btn-success {
+      background: var(--success);
+    }
+
+    .btn-success:hover {
+      background: #047857;
+    }
+
+    .btn-sm {
+      padding: 7px 14px;
+      font-size: 0.86rem;
+      border-radius: 8px;
+    }
+
+    .nav-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-top: 22px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+      flex-wrap: wrap;
+    }
+
+    .input-field {
+      width: 100%;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      font-size: 1rem;
+      margin: 8px 0 12px;
+    }
+
+    /* Карточки выбора и сортировки */
+    .sort-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px;
+      margin-bottom: 10px;
+    }
+
+    .sort-item-text {
+      margin-bottom: 10px;
+      font-size: 0.95rem;
+    }
+
+    .sort-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .choice-btn {
+      background: var(--surface-soft);
+      color: var(--text);
+      border: 1px solid var(--border);
+      padding: 7px 14px;
+      border-radius: 8px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .choice-btn:hover {
+      background: #e2e8f0;
+    }
+
+    .choice-btn.selected {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+    }
+
+    .choice-btn.correct {
+      background: var(--success);
+      color: #fff;
+      border-color: var(--success);
+    }
+
+    .choice-btn.wrong {
+      background: var(--danger);
+      color: #fff;
+      border-color: var(--danger);
+    }
+
+    /* Визуализация зубьев пилы */
+    .saw-viewer {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px;
+      margin: 12px 0;
+      text-align: center;
+    }
+
+    /* Конструктор последовательности (Модуль 3) */
+    .order-pool {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .order-chip {
+      background: var(--surface);
+      border: 1px solid var(--primary);
+      color: var(--primary-dark);
+      padding: 8px 14px;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .order-chip:hover {
+      background: var(--primary-light);
+    }
+
+    .order-slot {
+      background: var(--surface);
+      border: 2px dashed var(--border);
+      border-radius: 10px;
+      padding: 10px 14px;
+      margin-bottom: 8px;
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .order-slot.filled {
+      border-style: solid;
+      border-color: var(--primary);
+      color: var(--text);
+      background: #fff;
+    }
+
+    /* Итоговый тест */
+    .quiz-q {
+      background: var(--surface-soft);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 14px;
+    }
+
+    .quiz-opt {
+      display: block;
+      width: 100%;
+      text-align: left;
+      padding: 10px 14px;
+      margin-top: 8px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--surface);
+      color: var(--text);
+      cursor: pointer;
+      font-size: 0.93rem;
+      transition: all 0.15s;
+    }
+
+    .quiz-opt:hover {
+      border-color: var(--primary);
+    }
+
+    .quiz-opt.selected {
+      border-color: var(--primary);
+      background: var(--primary-light);
+      font-weight: 600;
+    }
+
+    .quiz-opt.correct {
+      border-color: var(--success);
+      background: var(--success-light);
+      color: #065f46;
+      font-weight: 700;
+    }
+
+    .quiz-opt.wrong {
+      border-color: var(--danger);
+      background: var(--danger-light);
+      color: #991b1b;
+    }
+
+    /* Карточка результата */
+    .cert-box {
+      border: 3px solid var(--primary);
+      background: linear-gradient(135deg, #ffffff 0%, #fef3c7 100%);
+      border-radius: 18px;
+      padding: 24px;
+      text-align: center;
+      margin-top: 18px;
+    }
+
+    .cert-grade {
+      display: inline-block;
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--success);
+      background: var(--success-light);
+      padding: 8px 22px;
+      border-radius: 12px;
+      margin: 12px 0;
+    }
+
+    .feedback {
+      margin-top: 10px;
+      font-weight: 600;
+      font-size: 0.93rem;
+    }
+
+    @media (max-width: 600px) {
+      .card { padding: 16px; }
+      h1 { font-size: 1.32rem; }
+      h2 { font-size: 1.16rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="topbar-row">
+        <span class="badge">Труд (технология) • 5 класс</span>
+        <span class="timer-box" id="timerDisplay">Время урока: 00:00 / 45:00</span>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill" id="progressBar"></div>
+      </div>
+      <nav class="nav-pills" id="navPills">
+        <button class="nav-pill active" onclick="goToStep(0)">Старт</button>
+        <button class="nav-pill" onclick="goToStep(1)">1. Верстак и разметка</button>
+        <button class="nav-pill" onclick="goToStep(2)">2. Пиление</button>
+        <button class="nav-pill" onclick="goToStep(3)">3. Строгание и зачистка</button>
+        <button class="nav-pill" onclick="goToStep(4)">4. Техника безопасности</button>
+        <button class="nav-pill" onclick="goToStep(5)">5. Итоговый тест</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- ШАГ 0: ВВЕДЕНИЕ -->
+    <section class="module active" id="step-0">
+      <div class="card">
+        <span class="time-tag">Самостоятельный урок • 45 минут</span>
+        <h1>Технология обработки древесины ручным инструментом</h1>
+        <p>Чтобы сделать из обычного деревянного бруска или доски красивое и ровное изделие, мастер выполняет строгую последовательность операций: <strong>разметку, пиление, строгание, сверление и зачистку</strong>.</p>
+        <p>На этом уроке ты изучишь устройство столярного верстака и ручных инструментов, разберёшься в видах зубьев пилы и научишься безопасно организовывать работу.</p>
+
+        <div class="callout">
+          <strong>Как пройти урок:</strong><br />
+          1. Изучай теорию в каждом из 4 разделов по порядку.<br />
+          2. Выполняй интерактивные тренажёры сразу после чтения.<br />
+          3. В конце ответь на 8 вопросов итогового теста и отправь скриншот карточки с оценкой учителю.
+        </div>
+
+        <label for="studentNameInput"><strong>Введи фамилию, имя и класс перед началом:</strong></label>
+        <input type="text" id="studentNameInput" class="input-field" placeholder="Например: Морозов Кирилл, 5-А" />
+
+        <div class="nav-footer">
+          <span></span>
+          <button class="btn" onclick="startLesson()">Начать урок →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ШАГ 1: ВЕРСТАК И РАЗМЕТКА -->
+    <section class="module" id="step-1">
+      <div class="card">
+        <span class="time-tag">Модуль 1 • Рекомендуемое время: 10 минут</span>
+        <h2>1. Столярный верстак и разметка заготовки</h2>
+        
+        <h3>Рабочее место столяра</h3>
+        <p>Обрабатывать древесину в руках неудобно и опасно. Для этого используют <strong>столярный верстак</strong>. Его главные части:</p>
+        <ul>
+          <li><strong>Крышка верстака</strong> — массивная деревянная плита, на которой выполняют работу.</li>
+          <li><strong>Лоток</strong> — углубление вдоль крышки для хранения инструментов, чтобы они не падали на пол.</li>
+          <li><strong>Передний и задний зажимы</strong> — винтовые устройства для надёжного крепления заготовок.</li>
+          <li><strong>Клинья (упоры)</strong> — вставляются в отверстия крышки и помогают зажать длинную доску.</li>
+        </ul>
+
+        <h3>Разметка заготовки</h3>
+        <p><strong>Разметка</strong> — это нанесение на заготовку контуров будущей детали. От точности разметки зависит качество всего изделия.</p>
+
+        <div class="grid-3">
+          <div class="info-box">
+            <strong>Линейка и карандаш</strong>
+            Измерение длины и проведение прямых линий. Для твёрдого карандаша выбирают грифель средней твёрдости (ТМ / HB).
+          </div>
+          <div class="info-box">
+            <strong>Столярный угольник</strong>
+            Построение и проверка прямых углов ($90^\circ$). Колодку угольника плотно прижимают к ровной <em>базовой кромке</em>.
+          </div>
+          <div class="info-box">
+            <strong>Циркуль и шаблон</strong>
+            Разметка окружностей, дуг и быстрое обведение криволинейных контуров по готовому образцу (шаблону).
+          </div>
+        </div>
+
+        <div class="callout">
+          <strong>Что такое припуск?</strong> При разметке всегда оставляют небольшой запас материала (1–3 мм) на дальнейшую обработку (пиление, строгание и зачистку), чтобы деталь не оказалась меньше нужного размера.
+        </div>
+
+        <div class="interactive-zone">
+          <div class="interactive-title">Тренажёр: Разметка или закрепление?</div>
+          <p style="font-size: 0.92rem;">Определи назначение каждого приспособления или действия:</p>
+          <div id="m1Container"></div>
+          <button class="btn btn-sm" onclick="checkM1()">Проверить ответы</button>
+          <div class="feedback" id="m1Feedback"></div>
+        </div>
+
+        <div class="nav-footer">
+          <button class="btn btn-secondary" onclick="goToStep(0)">← Назад</button>
+          <button class="btn" onclick="goToStep(2)">Дальше: Пиление древесины →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ШАГ 2: ПИЛЕНИЕ ДРЕВЕСИНЫ -->
+    <section class="module" id="step-2">
+      <div class="card">
+        <span class="time-tag">Модуль 2 • Рекомендуемое время: 12 минут</span>
+        <h2>2. Пиление древесины столярной ножовкой</h2>
+        <p><strong>Пиление</strong> — это разрезание древесины на части с помощью пилы. Самый распространённый ручной инструмент в школьной мастерской — <strong>столярная ножовка</strong>, состоящая из стального <em>полотна с зубьями</em> и <em>рукоятки</em>.</p>
+
+        <p>Древесина имеет волокнистое строение, поэтому зубья пил затачивают по-разному в зависимости от направления реза:</p>
+
+        <div class="interactive-zone">
+          <div class="interactive-title">Интерактивный атлас: Форма зубьев ножовки</div>
+          <p style="font-size: 0.92rem;">Нажимай на кнопки, чтобы увидеть форму зуба и узнать, для какого пиления он предназначен:</p>
+          <div class="sort-buttons">
+            <button class="choice-btn selected" onclick="showTooth('cross', this)">Поперечное пиление</button>
+            <button class="choice-btn" onclick="showTooth('rip', this)">Продольное пиление</button>
+            <button class="choice-btn" onclick="showTooth('univ', this)">Смешанное пиление</button>
+          </div>
+          <div class="saw-viewer" id="toothDisplay"></div>
+        </div>
+
+        <h3>Правила точного и ровного пиления:</h3>
+        <ul>
+          <li>Для точного распила под углом $90^\circ$ или $45^\circ$ используют специальное приспособление — <strong>стусло</strong>.</li>
+          <li>В начале пиления делают аккуратный <strong>запил</strong>, приставив к линии разметки деревянный брусок-направитель (но не палец!).</li>
+          <li>Пилят плавными движениями на всю длину полотна без сильного нажима сверху.</li>
+          <li>В конце пиления <strong>ослабляют нажим</strong> и придерживают отпиливаемую часть, чтобы не отколоть край заготовки.</li>
+        </ul>
+
+        <div class="interactive-zone">
+          <div class="interactive-title">Мини-проверка: Выбери правильное решение</div>
+          <div id="m2Container"></div>
+          <button class="btn btn-sm" onclick="checkM2()">Проверить</button>
+          <div class="feedback" id="m2Feedback"></div>
+        </div>
+
+        <div class="nav-footer">
+          <button class="btn btn-secondary" onclick="goToStep(1)">← Назад</button>
+          <button class="btn" onclick="goToStep(3)">Дальше: Строгание и зачистка →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ШАГ 3: СТРОГАНИЕ, СВЕРЛЕНИЕ И ЗАЧИСТКА -->
+    <section class="module" id="step-3">
+      <div class="card">
+        <span class="time-tag">Модуль 3 • Рекомендуемое время: 10 минут</span>
+        <h2>3. Строгание, сверление и зачистка поверхности</h2>
+        <p>После пиления поверхность древесины остаётся шероховатой. Чтобы придать детали гладкость и точные размеры, применяют следующие операции:</p>
+
+        <div class="grid-3">
+          <div class="info-box">
+            <strong>Строгание (Рубанок)</strong>
+            Снятие тонкого слоя древесины (стружки) ножом рубанка. Главные части рубанка: <em>колодка, нож (железко), клин, рожок и упор</em>. Строгают строго <strong>вдоль волокон</strong>.
+          </div>
+          <div class="info-box">
+            <strong>Сверление (Дрель, коловорот)</strong>
+            Получение круглых отверстий с помощью свёрл (спирального или перового). Под заготовку обязательно подкладывают <em>подкладную доску</em>, чтобы не испортить крышку верстака.
+          </div>
+          <div class="info-box">
+            <strong>Зачистка (Напильник, шкурка)</strong>
+            Окончательное выравнивание кромок напильником (или рашпилем) и шлифование <strong>шлифовальной шкуркой</strong> (наждачной бумагой) вдоль волокон.
+          </div>
+        </div>
+
+        <div class="interactive-zone">
+          <div class="interactive-title">Практикум: Собери технологическую цепочку</div>
+          <p style="font-size: 0.92rem;">Нажимай на этапы в правильном порядке, чтобы изготовить деревянную подставку под горячее:</p>
+          <div class="order-pool" id="orderPool"></div>
+          <div id="orderSlots">
+            <div class="order-slot" id="slot-0">Этап 1: ...</div>
+            <div class="order-slot" id="slot-1">Этап 2: ...</div>
+            <div class="order-slot" id="slot-2">Этап 3: ...</div>
+            <div class="order-slot" id="slot-3">Этап 4: ...</div>
+          </div>
+          <div style="margin-top: 10px; display: flex; gap: 8px;">
+            <button class="btn btn-sm btn-secondary" onclick="resetOrder()">Сбросить</button>
+            <button class="btn btn-sm" onclick="checkOrder()">Проверить порядок</button>
+          </div>
+          <div class="feedback" id="orderFeedback"></div>
+        </div>
+
+        <div class="nav-footer">
+          <button class="btn btn-secondary" onclick="goToStep(2)">← Назад</button>
+          <button class="btn" onclick="goToStep(4)">Дальше: Техника безопасности →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ШАГ 4: ТЕХНИКА БЕЗОПАСНОСТИ -->
+    <section class="module" id="step-4">
+      <div class="card">
+        <span class="time-tag">Модуль 4 • Рекомендуемое время: 6 минут</span>
+        <h2>4. Правила безопасной работы в столярной мастерской</h2>
+        <p>Ручной столярный инструмент имеет острые режущие кромки и зубья. Соблюдение техники безопасности обязательно при каждой операции:</p>
+
+        <div class="callout warn">
+          <strong>Категорически запрещается:</strong><br />
+          • Держать левую руку близко к полотну пилы при запиливании (используй деревянный брусок-направитель).<br />
+          • Проверять остроту лезвия рубанка или зубьев пилы пальцами.<br />
+          • Сдувать стружку и древесную пыль ртом или сметать голыми руками (используй щётку-смётку).<br />
+          • Класть инструменты на край крышки верстака лезвием вверх или от себя.
+        </div>
+
+        <div class="interactive-zone">
+          <div class="interactive-title">Инспектор ТБ: Найди нарушения в мастерской</div>
+          <p style="font-size: 0.92rem;">Оцени действия учеников во время практической работы:</p>
+          <div id="m4Container"></div>
+          <button class="btn btn-sm" onclick="checkM4()">Проверить</button>
+          <div class="feedback" id="m4Feedback"></div>
+        </div>
+
+        <div class="nav-footer">
+          <button class="btn btn-secondary" onclick="goToStep(3)">← Назад</button>
+          <button class="btn" onclick="goToStep(5)">Перейти к итоговому тесту →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ШАГ 5: ИТОГОВЫЙ ТЕСТ -->
+    <section class="module" id="step-5">
+      <div class="card">
+        <span class="time-tag">Модуль 5 • Рекомендуемое время: 7 минут</span>
+        <h2>5. Итоговый контроль знаний</h2>
+        <p>Ответь на 8 вопросов по теме урока. После проверки сформируется итоговая карточка с оценкой.</p>
+
+        <div id="finalQuizContainer"></div>
+
+        <button class="btn btn-success" style="width: 100%; margin-top: 10px;" onclick="finishLesson()">Завершить урок и получить оценку</button>
+
+        <div id="certificateSection" style="display: none;">
+          <div class="cert-box">
+            <div style="font-size: 0.88rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); font-weight: 700;">
+              Карточка прохождения урока • Труд (технология) 5 класс
+            </div>
+            <h2 id="certStudentName" style="margin: 8px 0; color: var(--text);">Ученик 5 класса</h2>
+            <p style="margin-bottom: 4px;">Тема: «Технология обработки древесины ручным инструментом»</p>
+            <div class="cert-grade" id="certGradeText">Оценка: 5 (Отлично)</div>
+            <p id="certStats" style="font-weight: 600;"></p>
+            <p id="certCode" style="font-family: monospace; font-size: 0.9rem; color: var(--text-muted);"></p>
+            <div class="callout success" style="text-align: left; margin-top: 12px;">
+              Сделай скриншот этой карточки и отправь учителю для выставления оценки в журнал!
+            </div>
+          </div>
+        </div>
+
+        <div class="nav-footer">
+          <button class="btn btn-secondary" onclick="goToStep(4)">← Вернуться к теории</button>
+          <button class="btn btn-secondary btn-sm" onclick="resetAll()">Пройти заново</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    // --- СОСТОЯНИЕ ---
+    const state = {
+      currentStep: 0,
+      completedSteps: [false, false, false, false, false, false],
+      secondsElapsed: 0,
+      studentName: ""
+    };
+
+    // --- ТАЙМЕР ---
+    setInterval(() => {
+      state.secondsElapsed++;
+      const m = String(Math.floor(state.secondsElapsed / 60)).padStart(2, "0");
+      const s = String(state.secondsElapsed % 60).padStart(2, "0");
+      document.getElementById("timerDisplay").textContent = `Время урока: ${m}:${s} / 45:00`;
+    }, 1000);
+
+    // --- НАВИГАЦИЯ ---
+    function goToStep(idx) {
+      document.querySelectorAll(".module").forEach((el, i) => el.classList.toggle("active", idx === i));
+      document.querySelectorAll(".nav-pill").forEach((pill, i) => {
+        pill.classList.toggle("active", idx === i);
+        pill.classList.toggle("done", state.completedSteps[i]);
+      });
+      state.currentStep = idx;
+      updateProgress();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function markStepDone(idx) {
+      state.completedSteps[idx] = true;
+      const pills = document.querySelectorAll(".nav-pill");
+      if (pills[idx]) pills[idx].classList.add("done");
+      updateProgress();
+    }
+
+    function updateProgress() {
+      const done = state.completedSteps.filter(Boolean).length;
+      const pct = Math.min(100, Math.round((done / 5) * 100));
+      document.getElementById("progressBar").style.width = `${pct}%`;
+    }
+
+    function startLesson() {
+      const val = document.getElementById("studentNameInput").value.trim();
+      state.studentName = val || "Ученик 5 класса";
+      markStepDone(0);
+      goToStep(1);
+    }
+
+    // --- УНИВЕРСАЛЬНЫЙ РЕНДЕР ТРЕНАЖЁРОВ ---
+    const sortStorage = { m1Container: {}, m2Container: {}, m4Container: {} };
+
+    function buildSortModule(containerId, items, options) {
+      const box = document.getElementById(containerId);
+      box.innerHTML = "";
+      items.forEach((item, idx) => {
+        const div = document.createElement("div");
+        div.className = "sort-item";
+        div.innerHTML = `
+          <div class="sort-item-text"><strong>${idx + 1}.</strong> ${item.text}</div>
+          <div class="sort-buttons" id="${containerId}-btns-${idx}">
+            ${options.map(opt => `
+              <button class="choice-btn" onclick="selectSortOption('${containerId}', ${idx}, '${opt}', this)">${opt}</button>
+            `).join("")}
+          </div>
+        `;
+        box.appendChild(div);
+      });
+    }
+
+    function selectSortOption(containerId, idx, opt, btn) {
+      sortStorage[containerId][idx] = opt;
+      const group = document.getElementById(`${containerId}-btns-${idx}`);
+      group.querySelectorAll(".choice-btn").forEach(b => b.classList.remove("selected", "correct", "wrong"));
+      btn.classList.add("selected");
+    }
+
+    function evaluateSortModule(containerId, items, feedbackId, stepIndex) {
+      let ok = 0;
+      items.forEach((item, idx) => {
+        const group = document.getElementById(`${containerId}-btns-${idx}`);
+        const chosen = sortStorage[containerId][idx];
+        group.querySelectorAll(".choice-btn").forEach(b => {
+          b.classList.remove("selected", "correct", "wrong");
+          if (b.textContent === chosen) {
+            if (chosen === item.answer) {
+              b.classList.add("correct");
+              ok++;
+            } else {
+              b.classList.add("wrong");
+            }
+          }
+        });
+      });
+      const fb = document.getElementById(feedbackId);
+      if (ok === items.length) {
+        fb.style.color = "var(--success)";
+        fb.textContent = `Отлично! Все ${ok} из ${items.length} ответов верны!`;
+        markStepDone(stepIndex);
+      } else {
+        fb.style.color = "var(--warning)";
+        fb.textContent = `Правильно: ${ok} из ${items.length}. Исправь выделенные красным пункты.`;
+      }
+    }
+
+    // --- МОДУЛЬ 1 ---
+    const m1Data = [
+      { text: "Столярный угольник для проверки прямого угла", answer: "Разметка заготовки" },
+      { text: "Задний винтовой зажим столярного верстака", answer: "Закрепление заготовки" },
+      { text: "Фанерный шаблон для обведения контура детали", answer: "Разметка заготовки" },
+      { text: "Деревянные клинья (упоры) в отверстиях крышки верстака", answer: "Закрепление заготовки" },
+      { text: "Разметочный циркуль для проведения окружности", answer: "Разметка заготовки" }
+    ];
+    buildSortModule("m1Container", m1Data, ["Разметка заготовки", "Закрепление заготовки"]);
+    function checkM1() { evaluateSortModule("m1Container", m1Data, "m1Feedback", 1); }
+
+    // --- МОДУЛЬ 2: АТЛАС ЗУБЬЕВ И ПРОВЕРКА ---
+    function showTooth(type, btn) {
+      if (btn) {
+        document.querySelectorAll("#step-2 .sort-buttons:first-of-type .choice-btn").forEach(b => b.classList.remove("selected"));
+        btn.classList.add("selected");
+      }
+      const out = document.getElementById("toothDisplay");
+      if (type === "cross") {
+        out.innerHTML = `
+          <svg viewBox="0 0 320 90" style="max-width:320px; width:100%; height:auto;">
+            <polygon points="20,75 45,25 70,75 95,25 120,75 145,25 170,75 195,25 220,75 245,25 270,75" fill="#fef3c7" stroke="#b45309" stroke-width="2.5"/>
+          </svg>
+          <div><strong>Поперечное пиление (поперёк волокон):</strong> зубья имеют форму <em>равнобедренного треугольника</em>. Они перерезают волокна древесины с обеих сторон, как ножи.</div>
+        `;
+      } else if (type === "rip") {
+        out.innerHTML = `
+          <svg viewBox="0 0 320 90" style="max-width:320px; width:100%; height:auto;">
+            <polygon points="20,75 30,25 75,75 85,25 130,75 140,25 185,75 195,25 240,75 250,25 295,75" fill="#d1fae5" stroke="#047857" stroke-width="2.5"/>
+          </svg>
+          <div><strong>Продольное пиление (вдоль волокон):</strong> зубья имеют форму <em>косоугольного треугольника</em> (наклонены вперёд). Они работают как маленькие стамески, вырезая стружку вдоль волокон.</div>
+        `;
+      } else {
+        out.innerHTML = `
+          <svg viewBox="0 0 320 90" style="max-width:320px; width:100%; height:auto;">
+            <polygon points="20,75 38,25 70,75 88,25 120,75 138,25 170,75 188,25 220,75 238,25 270,75" fill="#dbeafe" stroke="#1d4ed8" stroke-width="2.5"/>
+          </svg>
+          <div><strong>Смешанное пиление:</strong> зубья имеют форму <em>прямоугольного треугольника</em>. Подходят для пиления как вдоль, так и поперёк волокон.</div>
+        `;
+      }
+    }
+    showTooth("cross");
+
+    const m2Data = [
+      { text: "Нужно отпилить брусок строго под углом 45° для рамки. Какое приспособление применить?", answer: "Стусло" },
+      { text: "Как нужно действовать в самом конце распиливания заготовки?", answer: "Ослабить нажим и придержать отпиливаемую часть" },
+      { text: "Что нужно приложить к линии разметки для безопасного запиливания?", answer: "Деревянный брусок-направитель" }
+    ];
+    buildSortModule("m2Container", m2Data, [
+      "Стусло",
+      "Ослабить нажим и придержать отпиливаемую часть",
+      "Деревянный брусок-направитель"
+    ]);
+    function checkM2() { evaluateSortModule("m2Container", m2Data, "m2Feedback", 2); }
+
+    // --- МОДУЛЬ 3: КОНСТРУКТОР ТЕХНОЛОГИЧЕСКОЙ ЦЕПОЧКИ ---
+    const orderSteps = [
+      { id: "s1", text: "1. Выбор заготовки и разметка по шаблону с припуском" },
+      { id: "s2", text: "2. Закрепление заготовки и пиление ножовкой по разметке" },
+      { id: "s3", text: "3. Строгание и выравнивание кромок рубанком и напильником" },
+      { id: "s4", text: "4. Зачистка поверхности шлифовальной шкуркой вдоль волокон" }
+    ];
+    const correctSequence = ["s1", "s2", "s3", "s4"];
+    let userSequence = [];
+
+    function initOrder() {
+      const pool = document.getElementById("orderPool");
+      pool.innerHTML = "";
+      const shuffled = [...orderSteps].sort(() => Math.random() - 0.5);
+      shuffled.forEach(item => {
+        const cleanLabel = item.text.replace(/^\d+\.\s*/, "");
+        pool.innerHTML += `<button class="order-chip" id="chip-${item.id}" onclick="pickOrderStep('${item.id}', '${cleanLabel}')">${cleanLabel}</button>`;
+      });
+    }
+
+    function pickOrderStep(id, label) {
+      if (userSequence.length >= 4 || userSequence.includes(id)) return;
+      userSequence.push(id);
+      document.getElementById(`chip-${id}`).style.display = "none";
+      const idx = userSequence.length - 1;
+      const slot = document.getElementById(`slot-${idx}`);
+      slot.classList.add("filled");
+      slot.textContent = `Этап ${idx + 1}: ${label}`;
+    }
+
+    function resetOrder() {
+      userSequence = [];
+      document.querySelectorAll(".order-chip").forEach(el => el.style.display = "inline-block");
+      for (let i = 0; i < 4; i++) {
+        const slot = document.getElementById(`slot-${i}`);
+        slot.classList.remove("filled");
+        slot.style.borderColor = "";
+        slot.textContent = `Этап ${i + 1}: ...`;
+      }
+      document.getElementById("orderFeedback").textContent = "";
+    }
+
+    function checkOrder() {
+      if (userSequence.length < 4) {
+        document.getElementById("orderFeedback").style.color = "var(--warning)";
+        document.getElementById("orderFeedback").textContent = "Сначала выбери все 4 этапа!";
+        return;
+      }
+      let ok = 0;
+      for (let i = 0; i < 4; i++) {
+        const slot = document.getElementById(`slot-${i}`);
+        if (userSequence[i] === correctSequence[i]) {
+          slot.style.borderColor = "var(--success)";
+          ok++;
+        } else {
+          slot.style.borderColor = "var(--danger)";
+        }
+      }
+      const fb = document.getElementById("orderFeedback");
+      if (ok === 4) {
+        fb.style.color = "var(--success)";
+        fb.textContent = "Верно! Технологическая последовательность составлена без ошибок.";
+        markStepDone(3);
+      } else {
+        fb.style.color = "var(--danger)";
+        fb.textContent = "Есть ошибки (выделены красным). Нажми «Сбросить» и попробуй снова.";
+      }
+    }
+    initOrder();
+
+    // --- МОДУЛЬ 4: ИНСПЕКТОР ТБ ---
+    const m4Data = [
+      { text: "Ученик сдувает опилки со столярного верстака ртом, чтобы быстрее очистить разметку", answer: "Нарушение ТБ" },
+      { text: "Ученик подложил под заготовку обрезную подкладную доску перед сверлением отверстия", answer: "Безопасно" },
+      { text: "Ученик проверяет пальцем, насколько остро заточено железко рубанка", answer: "Нарушение ТБ" },
+      { text: "Ученик надёжно зажал брусок в зажиме верстака перед строганием", answer: "Безопасно" }
+    ];
+    buildSortModule("m4Container", m4Data, ["Безопасно", "Нарушение ТБ"]);
+    function checkM4() { evaluateSortModule("m4Container", m4Data, "m4Feedback", 4); }
+
+    // --- МОДУЛЬ 5: ИТОГОВЫЙ ТЕСТ ---
+    const quizData = [
+      {
+        q: "1. Как называется углубление вдоль крышки столярного верстака для хранения инструментов?",
+        options: ["Лоток", "Клин", "Зажим"],
+        correct: 0
+      },
+      {
+        q: "2. Какой инструмент используют для построения и проверки прямых углов (90°) при разметке?",
+        options: ["Рашпиль", "Столярный угольник", "Коловорот"],
+        correct: 1
+      },
+      {
+        q: "3. Для чего при разметке детали оставляют припуск (1–3 мм)?",
+        options: [
+          "Для запаса на дальнейшую обработку (пиление, строгание, зачистку)",
+          "Чтобы деталь было удобнее держать в руке",
+          "Припуск оставлять не нужно"
+        ],
+        correct: 0
+      },
+      {
+        q: "4. Какую форму имеют зубья ножовки для поперечного пиления древесины?",
+        options: [
+          "Косоугольного треугольника",
+          "Равнобедренного треугольника",
+          "Полукруга"
+        ],
+        correct: 1
+      },
+      {
+        q: "5. Как называется приспособление с прорезями для точного распиливания брусков под углами 45° и 90°?",
+        options: ["Стусло", "Рубанок", "Шерхебель"],
+        correct: 0
+      },
+      {
+        q: "6. В каком направлении нужно строгать древесину рубанком и зачищать шлифовальной шкуркой?",
+        options: ["Поперёк волокон", "Вдоль волокон", "Только по кругу"],
+        correct: 1
+      },
+      {
+        q: "7. Зачем при сверлении отверстий под заготовку подкладывают подкладную доску?",
+        options: [
+          "Чтобы сверло не нагрелось",
+          "Чтобы не повредить крышку верстака при выходе сверла",
+          "Чтобы отверстие получилось квадратным"
+        ],
+        correct: 1
+      },
+      {
+        q: "8. Как правильно убирать стружку и опилки со столярного верстака?",
+        options: [
+          "Сдувать ртом",
+          "Сметать голыми руками",
+          "Убирать специальной щёткой-смёткой в совок"
+        ],
+        correct: 2
+      }
+    ];
+    const quizAnswers = {};
+
+    function renderQuiz() {
+      const box = document.getElementById("finalQuizContainer");
+      box.innerHTML = "";
+      quizData.forEach((item, qIdx) => {
+        const div = document.createElement("div");
+        div.className = "quiz-q";
+        div.innerHTML = `
+          <div><strong>${item.q}</strong></div>
+          <div id="quiz-opts-${qIdx}">
+            ${item.options.map((opt, oIdx) => `
+              <button class="quiz-opt" onclick="selectQuiz(${qIdx}, ${oIdx}, this)">${opt}</button>
+            `).join("")}
+          </div>
+        `;
+        box.appendChild(div);
+      });
+    }
+
+    function selectQuiz(qIdx, oIdx, btn) {
+      quizAnswers[qIdx] = oIdx;
+      const box = document.getElementById(`quiz-opts-${qIdx}`);
+      box.querySelectorAll(".quiz-opt").forEach(b => b.classList.remove("selected", "correct", "wrong"));
+      btn.classList.add("selected");
+    }
+
+    function finishLesson() {
+      if (Object.keys(quizAnswers).length < quizData.length) {
+        alert("Ответь на все 8 вопросов теста перед завершением урока!");
+        return;
+      }
+
+      let score = 0;
+      quizData.forEach((item, qIdx) => {
+        const chosen = quizAnswers[qIdx];
+        const box = document.getElementById(`quiz-opts-${qIdx}`);
+        box.querySelectorAll(".quiz-opt").forEach((b, oIdx) => {
+          b.classList.remove("selected", "correct", "wrong");
+          if (oIdx === item.correct) b.classList.add("correct");
+          else if (oIdx === chosen && chosen !== item.correct) b.classList.add("wrong");
+        });
+        if (chosen === item.correct) score++;
+      });
+
+      let grade = 2;
+      let label = "Нужно повторить тему";
+      if (score >= 7) { grade = 5; label = "Отлично"; }
+      else if (score >= 5) { grade = 4; label = "Хорошо"; }
+      else if (score >= 4) { grade = 3; label = "Удовлетворительно"; }
+
+      markStepDone(5);
+      const mins = Math.max(1, Math.round(state.secondsElapsed / 60));
+      const d = new Date();
+      const code = `TECH5-${score}${grade}-${d.getDate()}${d.getMonth() + 1}`;
+
+      document.getElementById("certStudentName").textContent = state.studentName || "Ученик 5 класса";
+      document.getElementById("certGradeText").textContent = `Оценка: ${grade} (${label})`;
+      document.getElementById("certStats").textContent = `Правильных ответов: ${score} из ${quizData.length} • Время работы: ~${mins} мин.`;
+      document.getElementById("certCode").textContent = `Код проверки: ${code}`;
+      document.getElementById("certificateSection").style.display = "block";
+      document.getElementById("certificateSection").scrollIntoView({ behavior: "smooth" });
+    }
+
+    function resetAll() {
+      if (confirm("Сбросить прогресс и пройти урок заново?")) {
+        location.reload();
+      }
+    }
+
+    renderQuiz();
+  </script>
+</body>
+</html>
